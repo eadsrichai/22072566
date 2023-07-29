@@ -43,15 +43,27 @@
                     $h = pow($h/100.00,2);
                     $bmi = $w/($h);
                  
+                    if($bmi < 18.50){
+                        $result = "น้ำหนักน้อย/ผอม";
+                    }else if($bmi < 22.90){
+                        $result = "ปกติ";
+                    }else if($bmi < 24.90){
+                        $result = "ท้วม";
+                    }else if($bmi < 29.90){
+                        $result = "อ้วน";
+                    }else {
+                        $result = "อ้วนมาก";
+                    }
             ?>
             <div class="row row-cols-1 gy-3">
                 <div class="col">
                     <span>ค่า BMI ของคุณคือ :</span>
                     <input type="text" value="<?php  echo number_format( $bmi,2);  ?>" name="" class="" />
+                    <span>kg/m2</span>
                 </div>
                 <div class="col">
                     <span>ผลการทดสอบ :</span>
-                    <input type="text" value="" name="" class="" />
+                    <input type="text" value="<?php echo $result; ?>" name="" class="" />
                 </div>
             </div>
         <?php   }  ?>
